@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Copay Collective Medical - Patient Registration</title>
+
+<!--
+Program name: CopayCollectiveMedical
+Author: Blair M. Hearne
+Date created: 2/1/2026
+Date last edited: 2/27/2026
+Version: 1.5.1
+Description: Patient Registration Form for MIS3371 Homework 1
+-->
+
+<link rel="stylesheet" href="style.css">
+
+<script>
+function displayDate() {
+    const today = new Date();
+    document.getElementById("date").innerHTML = today.toDateString();
+}
+</script>
+
+</head>
+
+<body onload="displayDate()">
+
+
+<div id="header">
+    <img src="logo.png" alt="Medical Logo" width="80">
+    <h1>We'R'Docs Medical</h1>
+    <p>Today is: <span id="date"></span></p>
+</div>
+
+<hr>
+
+
+<div id="main">
+
+<h2>Patient Registration Form</h2>
+
+<form action="thankyou.html">
+
+<table>
+
+<tr>
+<td>First Name:</td>
+<td><input type="text" maxlength="30" required></td>
+
+<td>MI:</td>
+<td><input type="text" maxlength="1"></td>
+
+<td>Last Name:</td>
+<td><input type="text" maxlength="30" required></td>
+</tr>
+
+<tr>
+<td>Date of Birth:</td>
+<td><input type="text" placeholder="MM/DD/YYYY" required></td>
+
+<td>SSN:</td>
+<td><input type="password" maxlength="11" required></td>
+</tr>
+
+<tr>
+<td>Address Line 1:</td>
+<td colspan="3"><input type="text" maxlength="30" size="40"></td>
+</tr>
+
+<tr>
+<td>Address Line 2:</td>
+<td colspan="3"><input type="text" maxlength="30" size="40"></td>
+</tr>
+
+<tr>
+<td>City:</td>
+<td><input type="text" maxlength="30"></td>
+
+<td>State:</td>
+<td>
+<select>
+<option value="">Select</option>
+<option>TX</option>
+<option>CA</option>
+<option>NY</option>
+<!-- Insert full 50 state list -->
+</select>
+</td>
+
+<td>Zip:</td>
+<td><input type="text" maxlength="10"></td>
+</tr>
+
+<tr>
+<td>Email:</td>
+<td><input type="email" required></td>
+</tr>
+
+<tr>
+<td>User ID:</td>
+<td><input type="text" maxlength="20"></td>
+</tr>
+
+<tr>
+<td>Password:</td>
+<td><input type="password" required></td>
+
+<td>Re-enter Password:</td>
+<td><input type="password" required></td>
+</tr>
+
+<tr>
+<td>Health Rating (1-10):</td>
+<td><input type="range" min="1" max="10"></td>
+</tr>
+
+<tr>
+<td>Symptoms:</td>
+<td colspan="4">
+<textarea rows="3" cols="50"></textarea>
+</td>
+</tr>
+
+<tr>
+<td>Gender:</td>
+<td>
+<input type="radio" name="gender"> Male
+<input type="radio" name="gender"> Female
+<input type="radio" name="gender"> Other
+</td>
+</tr>
+
+<tr>
+<td>Vaccinated?</td>
+<td>
+<input type="radio" name="vaccinated"> Yes
+<input type="radio" name="vaccinated"> No
+</td>
+</tr>
+
+<tr>
+<td>Insurance?</td>
+<td>
+<input type="radio" name="insurance"> Yes
+<input type="radio" name="insurance"> No
+</td>
+</tr>
+
+<tr>
+<td>Medical History:</td>
+<td>
+<input type="checkbox"> Chicken Pox
+<input type="checkbox"> Measles
+<input type="checkbox"> Covid-19
+<input type="checkbox"> Tetanus
+<input type="checkbox"> Smallpox
+</td>
+</tr>
+
+<tr>
+<td>
+<input type="reset" value="CLEAR AND START OVER">
+</td>
+
+<td>
+<input type="submit" value="Submit">
+</td>
+</tr>
+
+</table>
+
+</form>
+</div>
+
+<hr>
+
+<!-- FOOTER DIV -->
+<div id="footer">
+<p>We'R'Docs Medical | PO Box 18881 | Sugar Land, TX 77496</p>
+<button onclick="alert('Contact us at support@werdocs.com')">CONTACT US</button>
+</div>
+
+<!-- END OF FILE COMMENT -->
+<!-- End of patient-form.html -->
+
+</body>
+</html>

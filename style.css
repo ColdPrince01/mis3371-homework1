@@ -1,0 +1,50 @@
+/*
+Program name: CopayCollectiveMedical
+Author: Blair M. Hearne
+Date created: 2/1/2026
+Date last edited: 2/27/2026
+Version: 1.5.1
+Description: External CSS for Patient Registration Form
+*/
+
+body {
+    background-color: #f0f8ff;
+    font-family: Arial, sans-serif;
+    color: #333333;
+}
+
+h1 {
+    color: darkblue;
+}
+
+h2 {
+    color: darkgreen;
+}
+
+#header {
+    background-color: #d6eaff;
+    padding: 10px;
+    text-align: center;
+}
+
+#footer {
+    background-color: #d6eaff;
+    padding: 10px;
+    text-align: center;
+}
+
+a:link {
+    color: blue;
+}
+
+a:visited {
+    color: purple;
+}
+
+table {
+    margin: auto;
+}
+
+input, textarea, select {
+    padding: 5px;
+}
