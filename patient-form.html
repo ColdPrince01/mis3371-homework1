@@ -28,19 +28,21 @@ function displayDate() {
 
 <body onload="displayDate()">
 
-
+<!-- Header Info, with banner and logo + Form title-->
 <div id="header">
     <img src="CopayCollectiveMedicalLogo.png" alt="Medical Logo" width="500">
     <h1>Copay Collective Medical</h1>
     <p><b>Today is: <span id="date"></span></b></p>
 </div>
 
+
+
 <hr>
 
 
 <div id="main">
 
-<h2>Patient Registration Form</h2>
+<h2><u>Patient Registration Form</u></h2>
 
 <form action="thankyou.html">
 
@@ -79,10 +81,12 @@ function displayDate() {
 <td>City:</td>
 <td><input type="text" maxlength="30"></td>
 
+
 <td>State:</td>
 <td>
 <select>
 <option value="">Select</option>
+<!-- Kind of nasty but a list of all 50 states for the drop down-->
 <option>AL</option>
 <option>AK</option>
 <option>AZ</option>
@@ -139,7 +143,6 @@ function displayDate() {
 <option>WI</option>
 <option>WY</option>
 
-<!-- Insert full 50 state list -->
 </select>
 
 </td>
@@ -215,9 +218,12 @@ function displayDate() {
 </td>
 </tr>
 
+
+
+
 <tr>
 <td>
-<input type="reset" value="CLEAR AND START OVER">
+<input type="reset" value="RESET REGISTRATION">
 </td>
 
 <td>
@@ -230,12 +236,16 @@ function displayDate() {
 </form>
 </div>
 
+<div id= "header2">
+    <img class="center-image" src = "CopayCollectiveMedicalBanner.png" alt="Medical Banner" width = "200">
+</div>
+
 <hr>
 
 <!-- FOOTER DIV -->
 <div id="footer">
 <p><b>Copay Collective Medical | PO Box 18881 | Sugar Land, TX 77496</b></p>
-<button onclick="alert('Contact us at support@werdocs.com')">CONTACT US</button>
+<button onclick="alert('Contact us at support@copaycollectivemedical.com')">CONTACT US</button>
 </div>
 
 <!-- END OF FILE COMMENT -->
