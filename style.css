@@ -7,6 +7,8 @@ Version: 1.5.1
 Description: External CSS for Patient Registration Form
 */
 
+/*The CSS file which will point towards the original HTML Doc */
+
 body {
     background-color: #f0fff5;
     font-family: Times 'Times New Roman', Times, serif, sans-serif;
