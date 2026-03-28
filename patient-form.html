@@ -16,6 +16,10 @@ Description: Patient Registration Form for MIS3371 Homework 1
 <link rel="stylesheet" href="style.css">
 
 
+<!--External reference to the Java Script script-->
+<script src="script.js" defer></script> 
+
+
 <!-- Java Scripting-->
 <script>
 function displayDate() {
@@ -48,9 +52,12 @@ function displayDate() {
 
 <table>
 
-<tr>
+
 <td>First Name:</td>
-<td><input type="text" maxlength="30" required></td>
+<td><input type="text" id="firstName" maxlength="30" required
+title="1–30 letters, apostrophes or dashes only"
+pattern="[A-Za-z'-]{1,30}"></td>
+
 
 <td>MI:</td>
 <td><input type="text" maxlength="1"></td>
@@ -59,12 +66,16 @@ function displayDate() {
 <td><input type="text" maxlength="30" required></td>
 </tr>
 
+
+
 <tr>
 <td>Date of Birth:</td>
 <td><input type="text" placeholder="MM/DD/YYYY" required></td>
 
 <td>SSN:</td>
-<td><input type="password" maxlength="11" required></td>
+<td><input type="password" id="password"
+pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#%^&*()\-_=+\\/<>.,`~])[^\"]{8,30}$"
+title="8–30 chars, uppercase, lowercase, number, special char, no quotes"></td>
 </tr>
 
 <tr>
@@ -80,6 +91,8 @@ function displayDate() {
 <tr>
 <td>City:</td>
 <td><input type="text" maxlength="30"></td>
+
+
 
 
 <td>State:</td>
@@ -149,6 +162,9 @@ function displayDate() {
 
 </td>
 
+
+
+
 <td>Zip:</td>
 <td><input type="text" maxlength="10"></td>
 </tr>
@@ -160,8 +176,10 @@ function displayDate() {
 </tr>
 
 <tr>
-<td>User ID:</td>
-<td><input type="text" maxlength="20"></td>
+<td>User ID</td>
+<td><input type="text" id="userId"
+pattern="^[a-zA-Z][a-zA-Z0-9_-]{4,29}$"
+title="5–30 chars, must start with letter, no spaces"></td>
 </tr>
 
 <tr>
@@ -172,9 +190,17 @@ function displayDate() {
 <td><input type="password" required></td>
 </tr>
 
+
+
 <tr>
 <td>Health Rating (1-10):</td>
 <td><input type="range" min="1" max="10"></td>
+</tr>
+
+<tr>
+<td>Salary</td>
+<td><input type="range" id="salary" min="20000" max="200000" step="1000" oninput="updateSlider(this.value)">
+<span id="salaryValue">$20000</span></td>
 </tr>
 
 <tr>
@@ -230,9 +256,13 @@ function displayDate() {
 </td>
 
 <td>
+<input type="button" value="REVIEW" onclick="reviewForm()">
 <input type="submit" value="Submit">
 </td>
 </tr>
+
+
+
 
 </table>
 
@@ -243,6 +273,12 @@ function displayDate() {
     <img class="center-image" src = "CopayCollectiveMedicalBanner.png" alt="Medical Banner" width = "200">
 </div>
 
+<div id="reviewSection">
+    <h2>PLEASE REVIEW THIS INFORMATION</h2>
+    <div id="reviewOutput"></div>
+</div>
+
+
 <hr>
 
 <!-- FOOTER DIV -->
@@ -250,6 +286,7 @@ function displayDate() {
 <p><b>Copay Collective Medical | PO Box 18881 | Sugar Land, TX 77496</b></p>
 <button onclick="alert('Contact us at support@copaycollectivemedical.com')">CONTACT US</button>
 </div>
+
 
 <!-- END OF FILE COMMENT -->
 <!-- End of patient-form.html -->
