@@ -54,23 +54,23 @@ function displayDate() {
 
 
 <td>First Name:</td>
-<td><input type="text" id="firstName" maxlength="30" required
-title="1–30 letters, apostrophes or dashes only"
-pattern="[A-Za-z'-]{1,30}"></td>
-
+<td><input type="text" id="firstName" oninput="validateFirstName()" title="1-30 letters only"></td>
+<span class="error" id="firstNameError"></span>
 
 <td>MI:</td>
 <td><input type="text" maxlength="1"></td>
 
 <td>Last Name:</td>
-<td><input type="text" maxlength="30" required></td>
+<td><input type="text" maxlength="30" oninput="validateLastName()" required></td>
+<span class="error" id="lastNameError"></span>
 </tr>
 
 
 
 <tr>
 <td>Date of Birth:</td>
-<td><input type="text" placeholder="MM/DD/YYYY" required></td>
+<td><input type="text" placeholder="MM/DD/YYYY" oninput="validateDOB()" required></td>
+<span class="error" id="dobError"></span>
 
 <td>SSN:</td>
 <td><input type="password" id="password"
@@ -97,6 +97,7 @@ title="8–30 chars, uppercase, lowercase, number, special char, no quotes"></td
 
 <td>State:</td>
 <td>
+<!--State Select Drop down-->
 <select>
 <option value="">Select</option>
 <!-- Kind of nasty, but a list of all 50 states for the drop down-->
@@ -172,7 +173,11 @@ title="8–30 chars, uppercase, lowercase, number, special char, no quotes"></td
 <tr>
 <td>Email:</td>
 <!-- Specify domain as email field-->
-<td><input type="email" required></td>
+<td><input type="text" id="email" 
+    oninput="validateEmail()" 
+    onblur="validateEmail()"></td>
+<span class="error" id="emailError"></span>
+
 </tr>
 
 <tr>
@@ -184,10 +189,12 @@ title="5–30 chars, must start with letter, no spaces"></td>
 
 <tr>
 <td>Password:</td>
-<td><input type="password" required></td>
+<td><input type="password" oninput="validatePassword()" required></td>
+<span class="error" id="passwordError"></span>
 
 <td>Re-enter Password:</td>
-<td><input type="password" required></td>
+<td><input type="password" oninput="validateConfirmPassword()" required></td>
+<span class="error" id="confirmError"></span>
 </tr>
 
 
@@ -256,8 +263,10 @@ title="5–30 chars, must start with letter, no spaces"></td>
 </td>
 
 <td>
-<input type="button" value="REVIEW" onclick="reviewForm()">
-<input type="submit" value="Submit">
+<input type="button" value="VALIDATE" onclick="validateForm()">
+<input type="submit" id="submitBtn" value="Submit" disabled>
+<span class="error" id=""></span>
+<button id="submitBtn" style="display:none" onclick="submitForm()">Submit</button>
 </td>
 </tr>
 

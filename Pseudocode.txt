@@ -1,0 +1,29 @@
+Below is the pseudocode for the validate button 
+
+START
+
+User enters data
+
+FOR each field:
+    validate on input or blur
+    IF invalid:
+        show error
+    ELSE:
+        clear error
+
+WHEN user clicks VALIDATE:
+    set valid = true
+
+    check all fields
+    IF any invalid:
+        valid = false
+
+    IF valid:
+        show submit button
+    ELSE:
+        show error alert
+
+WHEN user clicks submit:
+    redirect to thankyou page
+
+END
