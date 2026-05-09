@@ -105,6 +105,37 @@ function validateEmail() {
 }
 
 
+function validateSSN() {
+    let ssnInput = document.getElementById("ssn");
+    let value = ssnInput.value;
+
+    // Remove ANY non-numeric characters
+    value = value.replace(/\D/g, "");
+
+    // Limit to 9 digits max
+    if (value.length > 9) {
+        value = value.substring(0, 9);
+    }
+
+    // Put cleaned value back into field
+    ssnInput.value = value;
+
+    // Validation checks
+    if (value.length === 0) {
+        setError("ssnError", "SSN is required");
+        return false;
+    }
+
+    if (value.length < 9) {
+        setError("ssnError", "SSN must be exactly 9 digits");
+        return false;
+    }
+
+    // Valid
+    clearError("ssnError");
+    return true;
+}
+
 function validateDOB() {
     let value = document.getElementById("dob").value; //Grab the date of birth and save a reference to it to the variable "value"
     let date = new Date(value); //Pass that value in as a new sate
@@ -176,6 +207,67 @@ function validateConfirmPassword() {
     return true;
 }
 
+
+function validateAddress1() {
+    let value = document.getElementById("address1").value.trim();
+
+    let regex = /^[A-Za-z0-9\s#.,'-]{2,30}$/;
+
+    if (value.length === 0) {
+        setError("address1Error", "Address is required");
+        return false;
+    }
+
+    if (!regex.test(value)) {
+        setError("address1Error", "2–30 valid characters only");
+        return false;
+    }
+
+    clearError("address1Error");
+    return true;
+}
+
+function validateCity() {
+    let value = document.getElementById("city").value.trim();
+
+    let regex = /^[A-Za-z\s'-]{2,30}$/;
+
+    if (value.length === 0) {
+        setError("cityError", "City is required");
+        return false;
+    }
+
+    if (!regex.test(value)) {
+        setError("cityError", "Letters only (2–30 chars)");
+        return false;
+    }
+
+    clearError("cityError");
+    return true;
+}
+
+
+
+function validateZip() {
+    let input = document.getElementById("zip");
+    let value = input.value.trim();
+
+    let regex = /^\d{5}(-\d{4})?$/;
+
+    if (value.length === 0) {
+        setError("zipError", "Zip code is required");
+        return false;
+    }
+
+    if (!regex.test(value)) {
+        setError("zipError", "Format: 12345 or 12345-6789");
+        return false;
+    }
+
+    clearError("zipError");
+    return true;
+}
+
 function validateForm() {
 
     let valid = true;
@@ -183,12 +275,16 @@ function validateForm() {
     if (!validateFirstName()) valid = false;
     if (!validateEmail()) valid = false;
     if (!validateDOB()) valid = false;
+    if (!validateSSN()) valid = false;
+    if (!validateAddress1()) valid = false;
+    if (!validateZip()) valid = false;
+    if (!validateCity()) valid = false;
     if (!validateUserId()) valid = false;
     if (!validatePassword()) valid = false;
     if (!validateConfirmPassword()) valid = false;
 
     if (valid) {
-        document.getElementById("submitBtn").style.display = "inline";
+        document.getElementById("submitBtn").disabled = false;;
         alert("All fields valid. You may submit.");
     } else {
         alert("Please fix errors before submitting.");
@@ -201,12 +297,12 @@ function submitForm() {
 
 
 
-async function loadStates() {
+async function loadStates() { //Load states dropdown via external JSON file, parse it and load strings as options in the dropdown button
     try {
         let response = await fetch("states.json");
         let states = await response.json();
 
-        let dropdown = document.getElementById("States");
+        let dropdown = document.getElementById("state");
 
         // Add default option
         dropdown.innerHTML = `<option value="">Select State</option>`;

@@ -62,8 +62,9 @@ function displayDate() {
 
 
 <td>First Name:</td>
-<td><input type="text" id="firstName" oninput="validateFirstName()" title="1-30 letters only" required></td>
+<td><input type="text" id="firstName" oninput="validateFirstName()" title="1-30 letters only" onforminput="validateSSN()" required></td>
 <span class="error" id="firstNameError"></span>
+
 
 <td>MI:</td>
 <td><input type="text" maxlength="1"></td>
@@ -77,18 +78,20 @@ function displayDate() {
 
 <tr>
 <td>Date of Birth:</td>
-<td><input type="text" placeholder="MM/DD/YYYY" oninput="validateDOB()" required></td>
-<span class="error" id="dobError"></span>
+<td><input type="text" id="dob" placeholder="MM/DD/YYYY" oninput="validateDOB()" required>
+<span class="error" id="dobError"></span></td>
+
 
 <td>SSN:</td>
-<td><input type="password" id="password"
-pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#%^&*()\-_=+\\/<>.,`~])[^\"]{8,30}$"
-title="8–30 chars, uppercase, lowercase, number, special char, no quotes"></td>
-</tr>
+<td>
+    <input type="password" id="ssn" oninput="validateSSN()" maxlength="9">
+    <span class="error" id="ssnError"></span>
+</td>
 
 <tr>
 <td>Address Line 1:</td>
-<td colspan="3"><input type="text" maxlength="30" size="40"></td>
+<td colspan="3"><input type="text" id="address1" maxlength="30" size="40" oninput="validateAddress1()" required>
+<span class="error" id="address1Error"></span></td>
 </tr>
 
 <tr>
@@ -98,7 +101,9 @@ title="8–30 chars, uppercase, lowercase, number, special char, no quotes"></td
 
 <tr>
 <td>City:</td>
-<td><input type="text" maxlength="30"></td>
+<td><input type="text" id="city" maxlength="30" oninput="validateCity()" required>
+<span class="error" id="cityError"></span></td>
+
 
 
 
@@ -106,7 +111,7 @@ title="8–30 chars, uppercase, lowercase, number, special char, no quotes"></td
 <td>State:</td>
 <td>
 <!--States have been moved to an external JSON file-->
-<select id = "States"></select>
+<select id = "state"></select>
 
 <!-- Tables, Inputting User Info in order to register in Client/Patient-->
 
@@ -116,7 +121,7 @@ title="8–30 chars, uppercase, lowercase, number, special char, no quotes"></td
 
 
 <td>Zip:</td>
-<td><input type="text" maxlength="10"></td>
+<td><input type="text" id="zip" maxlength="10" oninput="validateZip()" required></td>
 </tr>
 
 <tr>
@@ -124,26 +129,31 @@ title="8–30 chars, uppercase, lowercase, number, special char, no quotes"></td
 <!-- Specify domain as email field-->
 <td><input type="text" id="email" 
     oninput="validateEmail()" 
-    onblur="validateEmail()" required></td>
-<span class="error" id="emailError"></span>
+    onblur="validateEmail()" required>
+    <span class="error" id="emailError"></span>
+</td>
+
 
 </tr>
 
 <tr>
 <td>User ID</td>
 <td><input type="text" id="userId"
-pattern="^[a-zA-Z][a-zA-Z0-9_-]{4,29}$"
-title="5–30 chars, must start with letter, no spaces"></td>
+maxlength="30" pattern="^[a-zA-Z][a-zA-Z0-9_-]{4,29}$"
+title="5–30 chars, must start with letter, no spaces" oninput="validateUserId()" required>
+<span class="error" id="userIdError"></span></td>
 </tr>
 
 <tr>
 <td>Password:</td>
-<td><input type="password" oninput="validatePassword()" required></td>
-<span class="error" id="passwordError"></span>
+<td><input type="password" id="password" oninput="validatePassword()" required>
+<span class="error" id="passwordError"></span></td>
+
 
 <td>Re-enter Password:</td>
-<td><input type="password" oninput="validateConfirmPassword()" required></td>
-<span class="error" id="confirmError"></span>
+<td><input type="password" id="confirmPassword" oninput="validateConfirmPassword()" required>
+<span class="error" id="confirmError"></span></td>
+
 </tr>
 
 
@@ -215,7 +225,7 @@ title="5–30 chars, must start with letter, no spaces"></td>
 <input type="button" value="VALIDATE" onclick="validateForm()">
 <input type="submit" id="submitBtn" value="Submit" disabled>
 <span class="error" id=""></span>
-<button id="submitBtn" style="display:none" onclick="submitForm()">Submit</button>
+
 </td>
 </tr>
 
