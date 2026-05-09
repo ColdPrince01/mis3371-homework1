@@ -24,8 +24,11 @@ h2 {
 }
 
 #header {
-    background-color: #d6eaff;
+    position: sticky;
+    top: 0;
+    background-color: #cfe8f3;
     padding: 10px;
+    z-index: 1000;
     text-align: center;
 }
 
@@ -55,5 +58,7 @@ table {
 input, textarea, select {
     padding: 5px;
 }
+
+
 
 

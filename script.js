@@ -43,9 +43,7 @@ function reviewForm() {
 
 }
 
-window.onload = function() {
-    loadStates();
-};
+
 
 function updateSlider(value) {
     document.getElementById("salaryValue").innerText = "$" + value;
@@ -223,7 +221,38 @@ async function loadStates() {
     } catch (error) {
         console.error("Error loading states:", error);
     }
+
+    
+
+
 }
+
+function loadCookieData() {
+    let name = getCookie("firstName");
+    if (name) {
+        document.getElementById("firstName").value = name;
+    }
+}
+
+
+function saveToLocalStorage() {
+    let email = document.getElementById("email").value;
+    localStorage.setItem("email", email);
+}
+
+function loadLocalStorage() {
+    let email = localStorage.getItem("email");
+    if (email) {
+        document.getElementById("email").value = email;
+    }
+}
+
+
+window.addEventListener("load", function() {
+    loadStates();
+    loadCookieData();
+    loadLocalStorage();
+});
 
 
 //#endregion 
