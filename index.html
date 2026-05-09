@@ -26,6 +26,7 @@ function displayDate() {
     const today = new Date();
     document.getElementById("date").innerHTML = today.toDateString();
 }
+
 </script>
 
 </head>
@@ -39,7 +40,14 @@ function displayDate() {
     <p><b>Today is: <span id="date"></span></b></p>
 </div>
 
+<h3>Health Information Resources</h3>
 
+<iframe 
+    src="https://www.cdc.gov" 
+    width="600" 
+    height="400"
+    title="Health Info">
+</iframe>
 
 <hr>
 
@@ -54,7 +62,7 @@ function displayDate() {
 
 
 <td>First Name:</td>
-<td><input type="text" id="firstName" oninput="validateFirstName()" title="1-30 letters only"></td>
+<td><input type="text" id="firstName" oninput="validateFirstName()" title="1-30 letters only" required></td>
 <span class="error" id="firstNameError"></span>
 
 <td>MI:</td>
@@ -97,67 +105,8 @@ title="8–30 chars, uppercase, lowercase, number, special char, no quotes"></td
 
 <td>State:</td>
 <td>
-<!--State Select Drop down-->
-<select>
-<option value="">Select</option>
-<!-- Kind of nasty, but a list of all 50 states for the drop down-->
-<option>AL</option>
-<option>AK</option>
-<option>AZ</option>
-<option>AR</option>
-<option>AS</option>
-<option>CA</option>
-<option>CO</option>
-<option>CT</option>
-<option>DE</option>
-<option>DC</option>
-<option>FL</option>
-<option>GA</option>
-<option>GU</option>
-<option>HI</option>
-<option>ID</option>
-<option>IL</option>
-<option>IN</option>
-<option>IA</option>
-<option>KS</option>
-<option>KY</option>
-<option>LA</option>
-<option>ME</option>
-<option>MD</option>
-<option>MA</option>
-<option>MI</option>
-<option>MN</option>
-<option>MS</option>
-<option>MO</option>
-<option>MT</option>
-<option>NE</option>
-<option>NV</option>
-<option>NH</option>
-<option>NJ</option>
-<option>NM</option>
-<option>NY</option>
-<option>NC</option>
-<option>ND</option>
-<option>MP</option>
-<option>OH</option>
-<option>OK</option>
-<option>OR</option>
-<option>PA</option>
-<option>PR</option>
-<option>RI</option>
-<option>SC</option>
-<option>TN</option>
-<option>TX</option>
-<option>TT</option>
-<option>UT</option>
-<option>VA</option>
-<option>VI</option>
-<option>WA</option>
-<option>WV</option>
-<option>WI</option>
-<option>WY</option>
-
-</select>
+<!--States have been moved to an external JSON file-->
+<select id = "States"></select>
 
 <!-- Tables, Inputting User Info in order to register in Client/Patient-->
 
@@ -175,7 +124,7 @@ title="8–30 chars, uppercase, lowercase, number, special char, no quotes"></td
 <!-- Specify domain as email field-->
 <td><input type="text" id="email" 
     oninput="validateEmail()" 
-    onblur="validateEmail()"></td>
+    onblur="validateEmail()" required></td>
 <span class="error" id="emailError"></span>
 
 </tr>
@@ -220,7 +169,7 @@ title="5–30 chars, must start with letter, no spaces"></td>
 <tr>
 <td>Gender:</td>
 <td>
-<input type="radio" name="gender"> Male
+<input type="radio" name="gender" required> Male
 <input type="radio" name="gender"> Female
 <input type="radio" name="gender"> Other
 </td>

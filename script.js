@@ -1,6 +1,7 @@
 function reviewForm() {
 
     let first = document.getElementById("firstName").value;
+    let last = document.getElementById("lastName").value;
     let phone = document.getElementById("phone").value;
     let email = document.getElementById("email").value;
     let userId = document.getElementById("userId").value.toLowerCase();
@@ -31,6 +32,7 @@ function reviewForm() {
     // Display output
     document.getElementById("reviewOutput").innerHTML = `
         <p><strong>Name:</strong> ${first}</p>
+        <p><strong>Name:</strong> ${last}</p>
         <p><strong>Email:</strong> ${email}</p>
         <p><strong>Phone:</strong> ${phone}</p>
         <p><strong>User ID:</strong> ${userId}</p>
@@ -40,6 +42,10 @@ function reviewForm() {
     
 
 }
+
+window.onload = function() {
+    loadStates();
+};
 
 function updateSlider(value) {
     document.getElementById("salaryValue").innerText = "$" + value;
@@ -197,7 +203,27 @@ function submitForm() {
 
 
 
+async function loadStates() {
+    try {
+        let response = await fetch("states.json");
+        let states = await response.json();
 
+        let dropdown = document.getElementById("States");
+
+        // Add default option
+        dropdown.innerHTML = `<option value="">Select State</option>`;
+
+        states.forEach(state => {
+            let option = document.createElement("option");
+            option.value = state;
+            option.textContent = state;
+            dropdown.appendChild(option);
+        });
+
+    } catch (error) {
+        console.error("Error loading states:", error);
+    }
+}
 
 
 //#endregion 
